@@ -24,16 +24,30 @@
     </div>
     <div class="mb-3">
         <label for="postCategories" class="form-label">Add new category</label>
-        <InputSelect id="postCategories" class="form-select" 
-            ValueExpression="@(()=>SelectedCategoryId)" 
-            Value="@SelectedCategoryId" 
-            ValueChanged="@((int value) => SelectCategory(value))">
+        @if (SelectedCategories.Count > 3)
+        {
+            <InputSelect id="postCategories" class="form-select" disabled="disabled"
+                         ValueExpression="@(()=>SelectedCategoryId)"
+                         Value="@SelectedCategoryId"
+                         ValueChanged="@((int value) => SelectCategory(value))">
+            </InputSelect>
+
+        }
+        else
+        {
+            <InputSelect id="postCategories" class="form-select"
+                         ValueExpression="@(()=>SelectedCategoryId)"
+                         Value="@SelectedCategoryId"
+                         ValueChanged="@((int value) => SelectCategory(value))">
                 <option value="-1" selected> - </option>
                 @foreach (var category in Categories)
                 {
                     <option value="@category.Id">@category.Name</option>
                 }
-        </InputSelect>
+            </InputSelect>
+            
+        }
+        
     </div>
 
     @if (SelectedCategories != null && SelectedCategories.Any())

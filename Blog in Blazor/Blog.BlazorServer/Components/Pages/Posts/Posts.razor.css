@@ -1,4 +1,15 @@
-﻿.post-controls {
+﻿
+.posts-page {
+    overflow-y: scroll;
+    scrollbar-width: none; /* Firefox */
+    height: 100vh;
+}
+
+.posts-page::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+}
+
+.post-controls {
     width: 50%;
     max-width: 500px;
     margin: 10px 0;

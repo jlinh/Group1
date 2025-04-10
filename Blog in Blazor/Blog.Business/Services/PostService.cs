@@ -75,6 +75,7 @@ namespace Blog.Business.Services
             {
                 return;
             }
+            postDTO.UpdatedDate = DateTime.Now;
 
             var dbPost = await _dbContext.Posts
                 .Include(p => p.PostCategories)
